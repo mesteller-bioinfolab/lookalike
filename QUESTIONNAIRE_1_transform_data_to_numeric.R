@@ -35,7 +35,7 @@ sample_info_csv$Use.Glasses. <- as.numeric(factor(sample_info_csv$Use.Glasses., 
 ### Education
 sample_info_csv$Education <- as.factor(sample_info_csv$Education )
 levels(sample_info_csv$Education) #  "Basic School"           "Elementary School"      "High School"            
-#  "Master"                 "Other"                  "Other (Grado superior)" "PhD"                    "University"     
+#  "Master"                 "Other"                  "Other (Upper level training)" "PhD"                    "University"     
 levels(sample_info_csv$Education) <- c(1,1,2,4,2.5,2.5,5,3)
 sample_info_csv$Education <- as.numeric(as.character(sample_info_csv$Education))
 
@@ -46,7 +46,7 @@ levels(sample_info_csv$Smoking) # "Former" "Heavy"  "Light"  "Never"
 levels(sample_info_csv$Smoking) <- c(3,4,2,1)
 sample_info_csv$Smoking <- as.numeric(as.character(sample_info_csv$Smoking))
 
-### "Diet"
+### "Diet" # From more plant-based to less plant-based
 sample_info_csv$Diet <- as.factor(sample_info_csv$Diet )
 levels(sample_info_csv$Diet) # "Not Vegetarian"   "Not Vegetarian (former vegetarian)" "Vegan"  "Vegetarian"  "Vegetarian (mostly)"    
 levels(sample_info_csv$Diet) <- c(5, 4, 1, 2,3)
@@ -126,7 +126,7 @@ for(x in  c("Office", "Travel", "Physical"  )) {
 }
 sample_info_csv <- sample_info_csv[!colnames(sample_info_csv) %in% "Employment_physical_office_travel"] # Remove original column
 
-### Employment_physical_office_travel
+### Employment_category 
 for(x in  c("Executive", "Salaried", "Own business"  )) {
   sample_info_csv[, x] <- as.numeric(grepl(x, sample_info_csv$Employment.Category))
 }

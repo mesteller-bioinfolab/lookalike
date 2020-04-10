@@ -24,10 +24,6 @@ categoric_physical_or_origin_traits <- c("Country",
                                          "City_village_residence",
                                          "Lived_elsewhere")
 
-numeric_physical_or_origin_traits   <- c("Age_turning_in_2016",
-                                         "Weight",
-                                         "Height")
-
 # Remove categoric variables (all related to origin or physical traits)
 df <- df[, !colnames(df) %in% categoric_physical_or_origin_traits]
 
@@ -103,10 +99,6 @@ distance_score  <- cbind(rownames(distance_score), distance_score)
 # write.table(distance_score, file = "cosine_ranking_with_age_height_weight_ULTRALALs_only.csv", quote = F, sep = ",", row.names = F)
 # write.table(cosine_matrix , file = "cosine_matrix_with_age_height_weight_ULTRALALs_only.csv", quote = F, sep = ",", row.names = T)
 
-
-# Filtering out origin height, weight and age
-
-norm1_df <- norm1_df[, !colnames(norm1_df) %in% numeric_physical_or_origin_traits]
 
 save(norm1_df, file = "lookalike_form_normalized_to_1.RData")
 
